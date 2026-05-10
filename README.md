@@ -1,8 +1,8 @@
 # Detection_of_Cyberbullying 🚨
 
-A machine learning-based web application developed using **Python**, **Django**, and **Natural Language Processing (NLP)** to detect cyberbullying content on social media platforms.
+A machine learning-based web application developed using Python, Django, Natural Language Processing (NLP), and MySQL (XAMPP) to detect cyberbullying content on social media platforms.
 
-The system analyzes text input and classifies whether it contains **cyberbullying** or **non-cyberbullying** content using machine learning algorithms.
+The system analyzes text input and classifies whether it contains cyberbullying or non-cyberbullying content using trained machine learning models.
 
 ---
 
@@ -11,9 +11,10 @@ The system analyzes text input and classifies whether it contains **cyberbullyin
 - Detects cyberbullying text in real time
 - Machine Learning-based text classification
 - NLP text preprocessing
-- User-friendly web interface
-- Database integration
-- Prediction result storage
+- User-friendly web interface using Django
+- MySQL database integration (XAMPP)
+- Stores prediction results in database
+- Supports multiple ML models for comparison
 
 ---
 
@@ -36,7 +37,7 @@ The system analyzes text input and classifies whether it contains **cyberbullyin
 - TF-IDF Vectorization
 
 ### Database
-- SQLite
+- MySQL (XAMPP / phpMyAdmin)
 
 ---
 
@@ -72,11 +73,60 @@ Clone repository:
 git clone https://github.com/Anjali-36/Anjali-36-Detection-Of-CyberBullying-On-Social-Media-Using-Machine-Learning.git
 ```
 
+
+Create virtual environment:
+
+```bash
+python -m venv venv
+venv\Scripts\activate
+```
+
 Install dependencies:
 
 ```bash
 pip install -r requirements.txt
 ```
+---
+
+### 🗄️ Database Setup (XAMPP - MySQL)
+1. Start XAMPP
+Open XAMPP Control Panel and start:
+- Apache
+- MySQL
+
+2. Create Database
+
+Go to:
+http://localhost/phpmyadmin
+
+Create database:
+cyberbullying_db
+
+
+3. Configure Django Database
+
+Update settings.py:
+```python
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'cyberbullying_db',
+        'USER': 'root',
+        'PASSWORD': '',
+        'HOST': 'localhost',
+        'PORT': '3306',
+    }
+}
+```
+
+4. Run Migrations
+```bash
+python manage.py makemigrations
+python manage.py migrate
+```
+
+---
 
 Run project:
 
@@ -102,7 +152,7 @@ This helps create safer online communication environments.
 
 ## 📊 Dataset
 
-The project uses labeled tweet datasets containing:
+The project uses labeled text/tweet datasets containing:
 
 - Cyberbullying text
 - Non-cyberbullying text
@@ -115,6 +165,15 @@ Preprocessing includes:
 - TF-IDF feature extraction
 
 ---
+
+## 📈 Model Workflow
+
+- Text input from user
+- Preprocessing using NLP
+- Feature extraction using TF-IDF
+- ML model prediction
+- Result displayed on UI
+- Stored in MySQL database
 
 ## 👩‍💻 Author
 
